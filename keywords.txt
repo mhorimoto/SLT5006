@@ -1,0 +1,29 @@
+#######################################
+# Syntax Coloring Map For SLT5006
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+SLT5006	KEYWORD1
+SLT5006DATA	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+begin	KEYWORD2
+readSensor	KEYWORD2
+getTemp	KEYWORD2
+getECBulk	KEYWORD2
+getVWCRock	KEYWORD2
+getVWC	KEYWORD2
+getVWCCoco	KEYWORD2
+getECPore	KEYWORD2
+getData	KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+
