@@ -5,7 +5,7 @@
 ## 特徴
 
 - 簡単なAPI設計
-- SoftwareSerialを使用したRS485通信
+- SoftwareSerialを使用したUART通信
 - 複数センサーの同時使用に対応
 - 温度、EC、VWCなど6種類のデータ取得
 - UECS（ユビキタス環境制御システム）との統合サンプル付き
