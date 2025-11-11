@@ -1,10 +1,13 @@
 /**
  * @file SLT5006.cpp
- * @brief SLT5006土壌センサー用Arduinoライブラリ実装
+ * @brief SLT5006土壌センサー用Arduinoライブラリ
+ * @author Masafumi Horimoto
+ * @version 1.1.0
+ * @date 2025-11-10
+ * @license MIT
  */
 
 #include "SLT5006.h"
-#include <avr/wdt.h>
 
 // センサーコマンド定義
 static const byte CMD_CHECK_VER[] PROGMEM = {0x01, 0x00, 0x07, 0xc2, 0x61};
@@ -37,7 +40,7 @@ void SLT5006::begin() {
   mySerial.write(check_ver, 5);
   rxData(0, 0);
   
-  //  Serial.println(F("SLT5006 initialized"));
+  Serial.println(F("SLT5006 initialized"));
 }
 
 // データ要素変換
@@ -86,14 +89,14 @@ int SLT5006::rxData(int dataConvFlag, int completeCheck) {
   
   // データ処理
   if (receivedBytes > 0) {
-    //Serial.print(F("Receive from SoftwareSerial: "));
-    //byteArrayToHexString(receiveData, receivedBytes);
+    //Serial.print(F("Receive from SoftwareSerial: ")); //
+    //byteArrayToHexString(receiveData, receivedBytes); // debug
     
     if (dataConvFlag != 0) {
       dataConv(receiveData);
     }
   } else {
-    //Serial.println(F("No data from SoftwareSerial"));
+    // Serial.println(F("No data from SoftwareSerial")); // debug
     ret = 3;
   }
   data.rcode = ret;
@@ -117,7 +120,7 @@ bool SLT5006::readSensor() {
   byte start_measure[6];
   byte check_measure[5];
   byte read_result[5];
-  int r;
+  int r,k;
   
   // PROGMEMからコマンドをコピー
   memcpy_P(start_measure, CMD_START_MEASURE, 6);
@@ -129,10 +132,12 @@ bool SLT5006::readSensor() {
   r = rxData(0, 0);
   
   // 測定完了待ち
+  k = 0;
   do {
     mySerial.write(check_measure, 5);
     r = rxData(0, 1);
-    wdt_reset();  // ウォッチドッグリセット
+    if (k>4) break;
+    k++;
   } while (r == 2);
   
   // 結果読み込み

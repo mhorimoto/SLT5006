@@ -1,8 +1,9 @@
 /**
  * @file SLT5006.h
  * @brief SLT5006土壌センサー用Arduinoライブラリ
- * @author Your Name
- * @date 2025
+ * @author Masafumi Horimoto
+ * @version 1.1.0
+ * @date 2025-11-10
  * @license MIT
  */
 
@@ -17,12 +18,12 @@
  */
 struct SLT5006DATA {
   float temp;       ///< 温度 (°C)
-  float ec_bulk;    ///< EC bulk (mS/cm)
+  float ec_bulk;    ///< EC bulk (dS/m)
   float vwc_rock;   ///< VWC rock (%) - ロックウール用
   float vwc;        ///< VWC (%) - 標準
   float vwc_coco;   ///< VWC coco (%) - ココピート用
-  float ec_pore;    ///< EC pore (mS/cm)
-  int   rcode;      ///< 戻り値 (0:no error,
+  float ec_pore;    ///< EC pore (dS/m)
+  int   rcode;      ///< 戻り値 (0:no error,2:not finish,3:no sensor)
 };
 
 /**

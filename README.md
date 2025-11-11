@@ -13,11 +13,11 @@
 ## サポートするセンサーデータ
 
 - **温度** (Temperature): °C
-- **EC Bulk**: mS/cm
+- **EC Bulk**: dS/m
 - **VWC Rock**: % (ロックウール用)
 - **VWC**: % (標準)
 - **VWC Coco**: % (ココピート用)
-- **EC Pore**: mS/cm
+- **EC Pore**: dS/m
 
 ## ハードウェア要件
 
